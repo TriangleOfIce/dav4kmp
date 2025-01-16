@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "io.github.triangleofice"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 kotlin {
     jvm()
@@ -74,27 +74,14 @@ tasks.named<Test>("jvmTest") {
 }
 
 android {
-    namespace = "org.jetbrains.kotlinx.multiplatform.library.template"
+    namespace = "io.github.triangleofice"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
 
-//publishing {
-//    publications {
-//        withType<MavenPublication> {
-//            artifactId = "dav4kmp-$version"
-//        }
-//    }
-//}
-
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.DEFAULT)
-//    publishToMavenCentral(SonatypeHost.S01)
-
-    signAllPublications()
-
     coordinates(group.toString(), "dav4kmp", version.toString())
 
     pom {
@@ -109,17 +96,22 @@ mavenPublishing {
                 distribution = "https://www.mozilla.org/en-US/MPL/2.0/"
             }
         }
-//        developers {
-//            developer {
-//                id = "XXX"
-//                name = "YYY"
-//                url = "ZZZ"
-//            }
-//        }
+        developers {
+            developer {
+                id = "troice"
+                name = "TrinagleOfIce"
+                url = "https://github.com/TriangleOfIce"
+                email = "justhear.master@gmail.com"
+            }
+        }
         scm {
             url = "https://github.com/TriangleOfIce/dav4kmp"
             connection = "scm:git:git:https://github.com/TriangleOfIce/dav4kmp.git"
             developerConnection = "scm:git:ssh://git@github.com/TriangleOfIce/dav4kmp.git"
         }
     }
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
 }
