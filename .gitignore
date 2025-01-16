@@ -28,6 +28,9 @@ proguard/
 # Log Files
 *.log
 
+# Kotlin
+.kotlin
+.kotlin/*
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
@@ -80,7 +83,6 @@ crashlytics-build.properties
 
 ### Gradle ###
 .gradle
-build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
