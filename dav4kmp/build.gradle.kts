@@ -7,8 +7,6 @@
  */
 
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -18,17 +16,15 @@ plugins {
 }
 
 group = "io.github.triangleofice"
-version = "0.0.1"
+version = "0.0.2"
 
 kotlin {
     jvm()
     androidTarget {
         publishLibraryVariants("release")
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
-        }
     }
+    jvmToolchain(17)
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
